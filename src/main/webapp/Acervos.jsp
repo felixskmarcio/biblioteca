@@ -71,9 +71,6 @@
                             <a class="nav-link active" href="${pageContext.request.contextPath}/acervos">Acervo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/emprestimos">Empréstimos</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
                         </li>
                         <li class="nav-item">
@@ -93,6 +90,24 @@
         </div>
     </section>
     
+    <!-- Mensagem de Feedback -->
+    <% 
+    String mensagem = (String) session.getAttribute("mensagem");
+    String tipoAlerta = (String) session.getAttribute("tipoAlerta");
+    
+    if (mensagem != null && !mensagem.isEmpty()) {
+        // Limpa os atributos da sessão após exibir a mensagem
+        session.removeAttribute("mensagem");
+        session.removeAttribute("tipoAlerta");
+    %>
+    <div class="container mb-4">
+        <div class="alert alert-<%= tipoAlerta != null ? tipoAlerta : "info" %> alert-dismissible fade show" role="alert">
+            <%= mensagem %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+        </div>
+    </div>
+    <% } %>
+    
     <!-- Search and Filter Section -->
     <section class="container filter-section">
         <div class="row">
@@ -110,56 +125,64 @@
     <!-- Books Grid -->
     <section class="container mb-5">
         <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="mb-4">
+            <div class="col-12 d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
                     <% if (request.getAttribute("searchTerm") != null && !request.getAttribute("searchTerm").toString().isEmpty()) { %>
                         Resultados para: "${searchTerm}"
                     <% } else { %>
                         Nosso Acervo
                     <% } %>
                 </h2>
+                <button type="button" id="btnExcluirSelecionados" class="btn btn-danger" style="display: none;" onclick="confirmarExclusao()">
+                    <i class="bi bi-trash"></i> Excluir Selecionados
+                </button>
             </div>
         </div>
         
-        <div class="row g-4">
-            <% 
-            java.util.List<model.Book> books = (java.util.List<model.Book>)request.getAttribute("books");
-            if (books == null || books.isEmpty()) { 
-            %>
-                <div class="col-12 text-center py-5">
-                    <i class="bi bi-search display-1 text-muted"></i>
-                    <h3 class="mt-4">Nenhum livro encontrado</h3>
-                    <p class="text-muted">Tente uma busca diferente ou explore nosso acervo completo.</p>
-                </div>
-            <% } else { 
-                for (model.Book book : books) { 
-            %>
-                <div class="col-md-6 col-lg-4 col-xl-3">
-                    <div class="card book-card">
-                        <div class="card-body">
-                            <h5 class="card-title book-title"><%= book.getTitle() %></h5>
-                            <p class="card-text book-author"><%= book.getAuthor() %></p>
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <span class="badge bg-info"><%= book.getGenre() %></span>
-                                <small class="text-muted"><%= book.getPublicationYear() %></small>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between">
-                                <span class="badge <%= book.getAvailableQuantity() > 0 ? "bg-success" : "bg-danger" %>">
-                                    <%= book.getAvailableQuantity() > 0 ? "Disponível" : "Indisponível" %>
-                                </span>
-                                <a href="${pageContext.request.contextPath}/livros/visualizar?id=<%= book.getId() %>" class="btn btn-sm btn-outline-primary">
-                                    Detalhes
-                                </a>
+        <form id="formExclusao" action="${pageContext.request.contextPath}/livros/excluir-multiplos" method="POST">
+            <div class="row g-4">
+                <% 
+                java.util.List<model.Book> books = (java.util.List<model.Book>)request.getAttribute("books");
+                if (books == null || books.isEmpty()) { 
+                %>
+                    <div class="col-12 text-center py-5">
+                        <i class="bi bi-search display-1 text-muted"></i>
+                        <h3 class="mt-4">Nenhum livro encontrado</h3>
+                        <p class="text-muted">Tente uma busca diferente ou explore nosso acervo completo.</p>
+                    </div>
+                <% } else { 
+                    for (model.Book book : books) { 
+                %>
+                    <div class="col-md-6 col-lg-4 col-xl-3">
+                        <div class="card book-card">
+                            <div class="card-body">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input book-checkbox" type="checkbox" name="bookIds" value="<%= book.getId() %>" onchange="verificarSelecionados()">
+                                </div>
+                                <h5 class="card-title book-title"><%= book.getTitle() %></h5>
+                                <p class="card-text book-author"><%= book.getAuthor() %></p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="badge bg-info"><%= book.getGenre() %></span>
+                                    <small class="text-muted"><%= book.getPublicationYear() %></small>
+                                </div>
+                                <hr>
+                                <div class="d-flex justify-content-between">
+                                    <span class="badge <%= book.getAvailableQuantity() > 0 ? "bg-success" : "bg-danger" %>">
+                                        <%= book.getAvailableQuantity() > 0 ? "Disponível" : "Indisponível" %>
+                                    </span>
+                                    <a href="${pageContext.request.contextPath}/livros/visualizar?id=<%= book.getId() %>" class="btn btn-sm btn-outline-primary">
+                                        Detalhes
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <% 
-                }
-            } 
-            %>
-        </div>
+                <% 
+                    }
+                } 
+                %>
+            </div>
+        </form>
         
         <!-- Pagination -->
         <% 
@@ -233,5 +256,27 @@
     </footer>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript para gerenciar seleção e exclusão -->
+    <script>
+        function verificarSelecionados() {
+            const checkboxes = document.querySelectorAll('.book-checkbox:checked');
+            const btnExcluir = document.getElementById('btnExcluirSelecionados');
+            
+            if (checkboxes.length > 0) {
+                btnExcluir.style.display = 'block';
+            } else {
+                btnExcluir.style.display = 'none';
+            }
+        }
+        
+        function confirmarExclusao() {
+            const checkboxes = document.querySelectorAll('.book-checkbox:checked');
+            const quantidade = checkboxes.length;
+            
+            if (confirm(`Tem certeza que deseja excluir ${quantidade} livro(s) do acervo? Esta ação não pode ser desfeita.`)) {
+                document.getElementById('formExclusao').submit();
+            }
+        }
+    </script>
 </body>
 </html> 

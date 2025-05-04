@@ -103,9 +103,6 @@ public class AcervosServlet extends HttpServlet {
             out.println("                            <a class=\"nav-link active\" href=\"" + request.getContextPath() + "/acervos\">Acervo</a>");
             out.println("                        </li>");
             out.println("                        <li class=\"nav-item\">");
-            out.println("                            <a class=\"nav-link\" href=\"" + request.getContextPath() + "/emprestimos\">Empréstimos</a>");
-            out.println("                        </li>");
-            out.println("                        <li class=\"nav-item\">");
             out.println("                            <a class=\"nav-link\" href=\"" + request.getContextPath() + "/sobre\">Sobre</a>");
             out.println("                        </li>");
             out.println("                        <li class=\"nav-item\">");
@@ -125,6 +122,23 @@ public class AcervosServlet extends HttpServlet {
             out.println("        </div>");
             out.println("    </section>");
             
+            // Mensagem de Feedback
+            String mensagem = (String) request.getSession().getAttribute("mensagem");
+            String tipoAlerta = (String) request.getSession().getAttribute("tipoAlerta");
+            
+            if (mensagem != null && !mensagem.isEmpty()) {
+                // Limpa os atributos da sessão após exibir a mensagem
+                request.getSession().removeAttribute("mensagem");
+                request.getSession().removeAttribute("tipoAlerta");
+                
+                out.println("    <div class=\"container mb-4\">");
+                out.println("        <div class=\"alert alert-" + (tipoAlerta != null ? tipoAlerta : "info") + " alert-dismissible fade show\" role=\"alert\">");
+                out.println("            " + mensagem);
+                out.println("            <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"alert\" aria-label=\"Fechar\"></button>");
+                out.println("        </div>");
+                out.println("    </div>");
+            }
+            
             // Search and Filter Section
             out.println("    <section class=\"container filter-section\">");
             out.println("        <div class=\"row\">");
@@ -142,17 +156,21 @@ public class AcervosServlet extends HttpServlet {
             // Books Grid
             out.println("    <section class=\"container mb-5\">");
             out.println("        <div class=\"row mb-4\">");
-            out.println("            <div class=\"col-12\">");
-            out.println("                <h2 class=\"mb-4\">");
+            out.println("            <div class=\"col-12 d-flex justify-content-between align-items-center\">");
+            out.println("                <h2 class=\"mb-0\">");
             if (searchTerm != null && !searchTerm.trim().isEmpty()) {
                 out.println("                    Resultados para: \"" + searchTerm + "\"");
             } else {
                 out.println("                    Nosso Acervo");
             }
             out.println("                </h2>");
+            out.println("                <button type=\"button\" id=\"btnExcluirSelecionados\" class=\"btn btn-danger\" style=\"display: none;\" onclick=\"confirmarExclusao()\">");
+            out.println("                    <i class=\"bi bi-trash\"></i> Excluir Selecionados");
+            out.println("                </button>");
             out.println("            </div>");
             out.println("        </div>");
             
+            out.println("        <form id=\"formExclusao\" action=\"" + request.getContextPath() + "/livros/excluir-multiplos\" method=\"POST\">");
             out.println("        <div class=\"row g-4\">");
             if (books == null || books.isEmpty()) {
                 out.println("            <div class=\"col-12 text-center py-5\">");
@@ -165,6 +183,9 @@ public class AcervosServlet extends HttpServlet {
                     out.println("            <div class=\"col-md-6 col-lg-4 col-xl-3\">");
                     out.println("                <div class=\"card book-card\">");
                     out.println("                    <div class=\"card-body\">");
+                    out.println("                        <div class=\"form-check mb-2\">");
+                    out.println("                            <input class=\"form-check-input book-checkbox\" type=\"checkbox\" name=\"bookIds\" value=\"" + book.getId() + "\" onchange=\"verificarSelecionados()\">");
+                    out.println("                        </div>");
                     out.println("                        <h5 class=\"card-title book-title\">" + book.getTitle() + "</h5>");
                     out.println("                        <p class=\"card-text book-author\">" + book.getAuthor() + "</p>");
                     out.println("                        <div class=\"d-flex justify-content-between align-items-center mt-3\">");
@@ -186,6 +207,7 @@ public class AcervosServlet extends HttpServlet {
                 }
             }
             out.println("        </div>");
+            out.println("        </form>");
             
             // Pagination
             if (searchTerm == null || searchTerm.trim().isEmpty()) {
@@ -256,6 +278,30 @@ public class AcervosServlet extends HttpServlet {
             out.println("    </footer>");
             
             out.println("    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js\"></script>");
+            
+            // JavaScript para gerenciar seleção e exclusão
+            out.println("    <script>");
+            out.println("        function verificarSelecionados() {");
+            out.println("            const checkboxes = document.querySelectorAll('.book-checkbox:checked');");
+            out.println("            const btnExcluir = document.getElementById('btnExcluirSelecionados');");
+            out.println("            ");
+            out.println("            if (checkboxes.length > 0) {");
+            out.println("                btnExcluir.style.display = 'block';");
+            out.println("            } else {");
+            out.println("                btnExcluir.style.display = 'none';");
+            out.println("            }");
+            out.println("        }");
+            out.println("        ");
+            out.println("        function confirmarExclusao() {");
+            out.println("            const checkboxes = document.querySelectorAll('.book-checkbox:checked');");
+            out.println("            const quantidade = checkboxes.length;");
+            out.println("            ");
+            out.println("            if (confirm(`Tem certeza que deseja excluir ${quantidade} livro(s) do acervo? Esta ação não pode ser desfeita.`)) {");
+            out.println("                document.getElementById('formExclusao').submit();");
+            out.println("            }");
+            out.println("        }");
+            out.println("    </script>");
+            
             out.println("</body>");
             out.println("</html>");
         }

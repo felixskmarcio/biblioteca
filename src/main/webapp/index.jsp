@@ -52,9 +52,6 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/acervos">Acervo</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/emprestimos">Empréstimos</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
                         </li>
                         <li class="nav-item">
@@ -111,8 +108,8 @@
                 <div class="card h-100 feature-card">
                     <div class="card-body text-center">
                         <i class="bi bi-arrow-left-right feature-icon text-primary"></i>
-                        <h3 class="card-title">Controle de Empréstimos</h3>
-                        <p class="card-text">Acompanhe empréstimos, devoluções e disponibilidade de exemplares em tempo real.</p>
+                        <h3 class="card-title">Acesso ao Catálogo</h3>
+                        <p class="card-text">Consulte o catálogo completo da biblioteca e a disponibilidade dos exemplares.</p>
                     </div>
                 </div>
             </div>
@@ -126,7 +123,7 @@
                 <div class="col-md-6">
                     <h2 class="mb-4">Sobre o Projeto</h2>
                     <p>A Biblioteca Comunitária é um sistema web desenvolvido para facilitar a administração de bibliotecas comunitárias, promovendo o acesso à leitura e cultura em comunidades.</p>
-                    <p>O sistema permite o gerenciamento completo do acervo, usuários e empréstimos, tornando a administração da biblioteca mais eficiente e acessível.</p>
+                    <p>O sistema permite o gerenciamento completo do acervo e usuários, tornando a administração da biblioteca mais eficiente e acessível.</p>
                     <a href="${pageContext.request.contextPath}/sobre" class="btn btn-primary mt-3">Saiba Mais</a>
                 </div>
                 <div class="col-md-6">
@@ -158,7 +155,7 @@
             <div class="col-md-4">
                 <div class="p-4 bg-info text-white rounded">
                     <h2 class="display-4">100+</h2>
-                    <p class="lead">Empréstimos Realizados</p>
+                    <p class="lead">Consultas Realizadas</p>
                 </div>
             </div>
         </div>
