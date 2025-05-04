@@ -17,6 +17,10 @@ IF NOT EXIST "build\war\WEB-INF\classes" mkdir build\war\WEB-INF\classes
 xcopy /E /Y src\main\webapp\* build\war\
 xcopy /E /Y build\classes\* build\war\WEB-INF\classes\
 
+REM Garante que o diretório assets/images e seus arquivos sejam copiados
+IF NOT EXIST "build\war\assets\images" mkdir build\war\assets\images
+xcopy /E /Y src\main\webapp\assets\images\* build\war\assets\images\
+
 REM Constrói o arquivo WAR
 IF NOT EXIST "build\war\WEB-INF\lib" mkdir build\war\WEB-INF\lib
 echo Copiando dependências para WEB-INF\lib...

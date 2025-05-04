@@ -8,8 +8,8 @@
             <div class="col-md-4 mb-3">
                 <h5>Biblioteca Comunitária</h5>
                 <p class="text-muted">Promovendo acesso à leitura e cultura para todos.</p>
-                <p class="mb-0"><i class="bi bi-envelope"></i> contato@bibliotecacomunitaria.org</p>
-                <p><i class="bi bi-telephone"></i> (11) 1234-5678</p>
+                <p class="mb-0"><i class="bi bi-envelope"></i> felixskmarcio2@gmail.com</p>
+                <p><i class="bi bi-telephone"></i> (82) 9.982748-81</p>
             </div>
             <div class="col-md-4 mb-3">
                 <h5>Links Rápidos</h5>
