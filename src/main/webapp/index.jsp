@@ -35,7 +35,36 @@
     </style>
 </head>
 <body>
-    <jsp:include page="WEB-INF/views/common/header.jsp" />
+    <!-- Header/Navbar -->
+    <header class="bg-dark text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="${pageContext.request.contextPath}/">Biblioteca Comunitária</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/emprestimos">Empréstimos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-primary text-white ms-2" href="${pageContext.request.contextPath}/login">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
     
     <!-- Hero Section -->
     <section class="hero-section">
@@ -43,7 +72,7 @@
             <h1 class="display-4 mb-4">Biblioteca Comunitária</h1>
             <p class="lead mb-5">Promovendo o acesso à leitura e cultura para todos</p>
             <div>
-                <a href="${pageContext.request.contextPath}/livros" class="btn btn-primary btn-lg me-3">
+                <a href="${pageContext.request.contextPath}/acervos" class="btn btn-primary btn-lg me-3">
                     <i class="bi bi-book"></i> Explorar Acervo
                 </a>
                 <a href="${pageContext.request.contextPath}/cadastro" class="btn btn-outline-light btn-lg">
@@ -135,7 +164,47 @@
         </div>
     </section>
     
-    <jsp:include page="WEB-INF/views/common/footer.jsp" />
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Biblioteca Comunitária</h5>
+                    <p class="text-muted">Promovendo acesso à leitura e cultura para todos.</p>
+                    <p class="mb-0"><i class="bi bi-envelope"></i> felixskmarcio2@gmail.com</p>
+                    <p><i class="bi bi-telephone"></i> (82) 9.982748-81</p>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Links Rápidos</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
+                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
+                        <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Horário de Funcionamento</h5>
+                    <p class="mb-1">Segunda a Sexta: 09h às 18h</p>
+                    <p class="mb-1">Sábado: 09h às 13h</p>
+                    <p>Domingo: Fechado</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 Biblioteca Comunitária. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#" class="text-light me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-light me-2"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-light me-2"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-light"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
