@@ -28,18 +28,6 @@
 		<load-on-startup>3</load-on-startup>
 	</servlet>
 	
-	<!-- Mapeamento de Taglibs JSTL -->
-	<jsp-config>
-		<taglib>
-			<taglib-uri>jakarta.tags.core</taglib-uri>
-			<taglib-location>/WEB-INF/tld/c.tld</taglib-location>
-		</taglib>
-		<taglib>
-			<taglib-uri>jakarta.tags.fmt</taglib-uri>
-			<taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
-		</taglib>
-	</jsp-config>
-	
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>

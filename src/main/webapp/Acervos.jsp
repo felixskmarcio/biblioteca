@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -113,77 +112,84 @@
         <div class="row mb-4">
             <div class="col-12">
                 <h2 class="mb-4">
-                    <c:if test="${not empty searchTerm}">
+                    <% if (request.getAttribute("searchTerm") != null && !request.getAttribute("searchTerm").toString().isEmpty()) { %>
                         Resultados para: "${searchTerm}"
-                    </c:if>
-                    <c:if test="${empty searchTerm}">
+                    <% } else { %>
                         Nosso Acervo
-                    </c:if>
+                    <% } %>
                 </h2>
             </div>
         </div>
         
         <div class="row g-4">
-            <c:choose>
-                <c:when test="${empty books}">
-                    <div class="col-12 text-center py-5">
-                        <i class="bi bi-search display-1 text-muted"></i>
-                        <h3 class="mt-4">Nenhum livro encontrado</h3>
-                        <p class="text-muted">Tente uma busca diferente ou explore nosso acervo completo.</p>
-                    </div>
-                </c:when>
-                <c:otherwise>
-                    <c:forEach var="book" items="${books}">
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="card book-card">
-                                <div class="card-body">
-                                    <h5 class="card-title book-title">${book.title}</h5>
-                                    <p class="card-text book-author">${book.author}</p>
-                                    <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="badge bg-info">${book.genre}</span>
-                                        <small class="text-muted">${book.publicationYear}</small>
-                                    </div>
-                                    <hr>
-                                    <div class="d-flex justify-content-between">
-                                        <span class="badge ${book.availableQuantity > 0 ? 'bg-success' : 'bg-danger'}">
-                                            ${book.availableQuantity > 0 ? 'Disponível' : 'Indisponível'}
-                                        </span>
-                                        <a href="${pageContext.request.contextPath}/livros/visualizar?id=${book.id}" class="btn btn-sm btn-outline-primary">
-                                            Detalhes
-                                        </a>
-                                    </div>
-                                </div>
+            <% 
+            java.util.List<model.Book> books = (java.util.List<model.Book>)request.getAttribute("books");
+            if (books == null || books.isEmpty()) { 
+            %>
+                <div class="col-12 text-center py-5">
+                    <i class="bi bi-search display-1 text-muted"></i>
+                    <h3 class="mt-4">Nenhum livro encontrado</h3>
+                    <p class="text-muted">Tente uma busca diferente ou explore nosso acervo completo.</p>
+                </div>
+            <% } else { 
+                for (model.Book book : books) { 
+            %>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card book-card">
+                        <div class="card-body">
+                            <h5 class="card-title book-title"><%= book.getTitle() %></h5>
+                            <p class="card-text book-author"><%= book.getAuthor() %></p>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="badge bg-info"><%= book.getGenre() %></span>
+                                <small class="text-muted"><%= book.getPublicationYear() %></small>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <span class="badge <%= book.getAvailableQuantity() > 0 ? "bg-success" : "bg-danger" %>">
+                                    <%= book.getAvailableQuantity() > 0 ? "Disponível" : "Indisponível" %>
+                                </span>
+                                <a href="${pageContext.request.contextPath}/livros/visualizar?id=<%= book.getId() %>" class="btn btn-sm btn-outline-primary">
+                                    Detalhes
+                                </a>
                             </div>
                         </div>
-                    </c:forEach>
-                </c:otherwise>
-            </c:choose>
+                    </div>
+                </div>
+            <% 
+                }
+            } 
+            %>
         </div>
         
         <!-- Pagination -->
-        <c:if test="${empty searchTerm && noOfPages > 1}">
+        <% 
+        String searchTerm = (String)request.getAttribute("searchTerm");
+        Integer noOfPages = (Integer)request.getAttribute("noOfPages");
+        Integer currentPage = (Integer)request.getAttribute("currentPage");
+        if ((searchTerm == null || searchTerm.isEmpty()) && noOfPages != null && noOfPages > 1) { 
+        %>
             <nav aria-label="Navegação de páginas" class="mt-5">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
-                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=${currentPage - 1}" aria-label="Anterior">
+                    <li class="page-item <%= (currentPage == 1) ? "disabled" : "" %>">
+                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= currentPage - 1 %>" aria-label="Anterior">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     
-                    <c:forEach begin="1" end="${noOfPages}" var="i">
-                        <li class="page-item ${currentPage == i ? 'active' : ''}">
-                            <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=${i}">${i}</a>
+                    <% for (int i = 1; i <= noOfPages; i++) { %>
+                        <li class="page-item <%= (currentPage == i) ? "active" : "" %>">
+                            <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= i %>"><%= i %></a>
                         </li>
-                    </c:forEach>
+                    <% } %>
                     
-                    <li class="page-item ${currentPage == noOfPages ? 'disabled' : ''}">
-                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=${currentPage + 1}" aria-label="Próximo">
+                    <li class="page-item <%= (currentPage == noOfPages) ? "disabled" : "" %>">
+                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= currentPage + 1 %>" aria-label="Próximo">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
                 </ul>
             </nav>
-        </c:if>
+        <% } %>
     </section>
     
     <!-- Footer -->
