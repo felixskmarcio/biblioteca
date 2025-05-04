@@ -133,9 +133,52 @@
                         Nosso Acervo
                     <% } %>
                 </h2>
-                <button type="button" id="btnExcluirSelecionados" class="btn btn-danger" style="display: none;" onclick="confirmarExclusao()">
-                    <i class="bi bi-trash"></i> Excluir Selecionados
-                </button>
+                <div>
+                    <button type="button" class="btn btn-success me-2" data-bs-toggle="collapse" data-bs-target="#formCadastroLivro" aria-expanded="false" aria-controls="formCadastroLivro">
+                        <i class="bi bi-plus-circle"></i> Cadastrar Livro
+                    </button>
+                    <button type="button" id="btnExcluirSelecionados" class="btn btn-danger" style="display: none;" onclick="confirmarExclusao()">
+                        <i class="bi bi-trash"></i> Excluir Selecionados
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Formulário de Cadastro Colapsável -->
+        <div class="collapse mb-4" id="formCadastroLivro">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Cadastrar Novo Livro</h5>
+                </div>
+                <div class="card-body">
+                    <form action="${pageContext.request.contextPath}/processarCadastroLivro.jsp" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title" class="form-label">Título*</label>
+                                <input type="text" class="form-control" id="title" name="title" required>
+                            </div>
+                            
+                            <div class="col-md-6 mb-3">
+                                <label for="author" class="form-label">Autor*</label>
+                                <input type="text" class="form-control" id="author" name="author" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Campos ocultos com valores padrão -->
+                        <input type="hidden" name="isbn" value="N/A">
+                        <input type="hidden" name="totalQuantity" value="1">
+                        <input type="hidden" name="availableQuantity" value="1">
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
+                            <button type="button" class="btn btn-outline-secondary me-md-2" data-bs-toggle="collapse" data-bs-target="#formCadastroLivro">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-save"></i> Salvar Livro
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         
@@ -161,15 +204,7 @@
                                 </div>
                                 <h5 class="card-title book-title"><%= book.getTitle() %></h5>
                                 <p class="card-text book-author"><%= book.getAuthor() %></p>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="badge bg-info"><%= book.getGenre() %></span>
-                                    <small class="text-muted"><%= book.getPublicationYear() %></small>
-                                </div>
-                                <hr>
                                 <div class="d-flex justify-content-between">
-                                    <span class="badge <%= book.getAvailableQuantity() > 0 ? "bg-success" : "bg-danger" %>">
-                                        <%= book.getAvailableQuantity() > 0 ? "Disponível" : "Indisponível" %>
-                                    </span>
                                     <a href="${pageContext.request.contextPath}/livros/visualizar?id=<%= book.getId() %>" class="btn btn-sm btn-outline-primary">
                                         Detalhes
                                     </a>
