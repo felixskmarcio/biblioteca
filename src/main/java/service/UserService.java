@@ -31,6 +31,16 @@ public class UserService {
     }
     
     /**
+     * Busca um usuário pelo email.
+     * 
+     * @param email Email do usuário
+     * @return Usuário encontrado ou null se não existir
+     */
+    public User getUserByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+    
+    /**
      * Registra um novo usuário no sistema.
      * Verifica se o email já está em uso antes de registrar.
      * 

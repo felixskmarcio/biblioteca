@@ -39,8 +39,14 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         
-        // Encaminha para a página de login
-        request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+        // Tenta usar a página de login básica no diretório raiz
+        try {
+            request.getRequestDispatcher("/login-basic.jsp").forward(request, response);
+        } catch (Exception e) {
+            // Se falhar, tenta a página original
+            System.out.println("Erro ao carregar login-basic.jsp: " + e.getMessage());
+            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+        }
     }
     
     /**
@@ -56,7 +62,7 @@ public class LoginServlet extends HttpServlet {
         // Validação simples dos campos
         if (email == null || email.trim().isEmpty() || password == null || password.trim().isEmpty()) {
             request.setAttribute("errorMessage", "Por favor, preencha todos os campos");
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login-basic.jsp").forward(request, response);
             return;
         }
         
@@ -76,7 +82,7 @@ public class LoginServlet extends HttpServlet {
         } else {
             // Autenticação falhou
             request.setAttribute("errorMessage", "Email ou senha inválidos");
-            request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/login-basic.jsp").forward(request, response);
         }
     }
 } 

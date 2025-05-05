@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Estante de livros -->
+  <rect x="100" y="100" width="600" height="400" fill="#8B4513" stroke="#5D2706" stroke-width="10" />
+  
+  <!-- Prateleiras -->
+  <rect x="100" y="200" width="600" height="10" fill="#5D2706" />
+  <rect x="100" y="300" width="600" height="10" fill="#5D2706" />
+  <rect x="100" y="400" width="600" height="10" fill="#5D2706" />
+  
+  <!-- Livros na primeira prateleira -->
+  <rect x="120" y="110" width="30" height="90" fill="#FF5733" />
+  <rect x="155" y="110" width="25" height="90" fill="#33A8FF" />
+  <rect x="185" y="110" width="40" height="90" fill="#FF33A8" />
+  <rect x="230" y="110" width="20" height="90" fill="#A833FF" />
+  <rect x="255" y="110" width="35" height="90" fill="#33FFA8" />
+  <rect x="295" y="110" width="30" height="90" fill="#A8FF33" />
+  <rect x="330" y="120" width="25" height="80" fill="#FF5733" transform="rotate(10 330 120)" />
+  <rect x="360" y="110" width="30" height="90" fill="#3357FF" />
+  <rect x="395" y="110" width="45" height="90" fill="#FF3333" />
+  <rect x="445" y="110" width="25" height="90" fill="#33FFA8" />
+  <rect x="475" y="110" width="30" height="90" fill="#A833FF" />
+  <rect x="510" y="110" width="20" height="90" fill="#33A8FF" />
+  <rect x="535" y="110" width="35" height="90" fill="#FFA833" />
+  <rect x="575" y="110" width="30" height="90" fill="#33FF57" />
+  <rect x="610" y="110" width="25" height="90" fill="#FF33A8" />
+  <rect x="640" y="110" width="40" height="90" fill="#3357FF" />
+  
+  <!-- Livros na segunda prateleira -->
+  <rect x="120" y="210" width="45" height="90" fill="#33A8FF" />
+  <rect x="170" y="210" width="30" height="90" fill="#A833FF" />
+  <rect x="205" y="210" width="25" height="90" fill="#FF5733" />
+  <rect x="235" y="230" width="30" height="70" fill="#33FF57" />
+  <rect x="270" y="210" width="40" height="90" fill="#FF33A8" />
+  <rect x="315" y="210" width="20" height="90" fill="#A8FF33" />
+  <rect x="340" y="210" width="35" height="90" fill="#33FFA8" />
+  <rect x="380" y="210" width="30" height="90" fill="#FFA833" />
+  <rect x="415" y="210" width="25" height="90" fill="#3357FF" />
+  <rect x="445" y="210" width="40" height="90" fill="#A833FF" />
+  <rect x="490" y="210" width="30" height="90" fill="#33A8FF" />
+  <rect x="525" y="220" width="25" height="80" fill="#FF5733" transform="rotate(-5 525 220)" />
+  <rect x="555" y="210" width="35" height="90" fill="#33FF57" />
+  <rect x="595" y="210" width="30" height="90" fill="#FF33A8" />
+  <rect x="630" y="210" width="50" height="90" fill="#A8FF33" />
+  
+  <!-- Livros na terceira prateleira -->
+  <rect x="130" y="310" width="30" height="90" fill="#A833FF" />
+  <rect x="165" y="310" width="25" height="90" fill="#33FFA8" />
+  <rect x="195" y="310" width="40" height="90" fill="#FF5733" />
+  <rect x="240" y="310" width="20" height="90" fill="#33A8FF" />
+  <rect x="265" y="310" width="35" height="90" fill="#FF33A8" />
+  <rect x="305" y="310" width="30" height="90" fill="#3357FF" />
+  <rect x="340" y="310" width="25" height="90" fill="#A8FF33" />
+  <rect x="370" y="310" width="35" height="90" fill="#FFA833" />
+  <rect x="410" y="320" width="30" height="80" fill="#FF5733" transform="rotate(-8 410 320)" />
+  <rect x="445" y="310" width="45" height="90" fill="#33FF57" />
+  <rect x="495" y="310" width="25" height="90" fill="#A833FF" />
+  <rect x="525" y="310" width="30" height="90" fill="#33A8FF" />
+  <rect x="560" y="310" width="20" height="90" fill="#FF33A8" />
+  <rect x="585" y="310" width="35" height="90" fill="#3357FF" />
+  <rect x="625" y="310" width="30" height="90" fill="#33FFA8" />
+  <rect x="660" y="310" width="25" height="90" fill="#A8FF33" />
+  
+  <!-- Pequeno personagem olhando para a estante -->
+  <circle cx="400" cy="520" r="30" fill="#FFD700" />
+  <rect x="385" y="550" width="30" height="50" fill="#1E90FF" />
+  <rect x="390" y="600" width="8" height="25" fill="#000000" />
+  <rect x="402" y="600" width="8" height="25" fill="#000000" />
+  
+  <!-- Texto "Biblioteca Comunitária" -->
+  <text x="400" y="50" font-family="Arial" font-size="30" text-anchor="middle" fill="#333333">Biblioteca Comunitária</text>
+</svg> 
