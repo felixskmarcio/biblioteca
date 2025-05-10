@@ -1,3 +1,5 @@
+// Este servlet é responsável por redirecionar de /acervos para /livros.
+
 package controller;
 
 import model.Book;
@@ -10,9 +12,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/**
- * Servlet responsável por redirecionar de /acervos para /livros.
- */
 @WebServlet("/acervos")
 public class AcervosServlet extends HttpServlet {
     

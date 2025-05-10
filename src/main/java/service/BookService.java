@@ -1,3 +1,5 @@
+// Este arquivo é responsável por implementar a lógica de negócio para gerenciar operações relacionadas a livros.
+
 package service;
 
 import dao.BookDAO;
@@ -12,28 +14,14 @@ import java.util.List;
 public class BookService {
     private BookDAO bookDAO;
     
-    /**
-     * Construtor padrão que inicializa o DAO de livros.
-     */
     public BookService() {
         this.bookDAO = new BookDAO();
     }
     
-    /**
-     * Registra um novo livro no sistema.
-     * 
-     * @param book O objeto livro a ser registrado
-     * @return true se o livro foi registrado com sucesso, false caso contrário
-     */
     public boolean registerBook(Book book) {
         return bookDAO.insert(book);
     }
     
-    /**
-     * Retorna todos os livros cadastrados no sistema.
-     * 
-     * @return Lista com todos os livros
-     */
     public List<Book> getAllBooks() {
         return bookDAO.findAll();
     }
@@ -65,41 +53,18 @@ public class BookService {
         return bookDAO.search(query);
     }
     
-    /**
-     * Obtém um livro pelo seu ID.
-     * 
-     * @param id ID do livro
-     * @return Livro encontrado ou null se não existir
-     */
     public Book getBookById(int id) {
         return bookDAO.findById(id);
     }
     
-    /**
-     * Atualiza as informações de um livro.
-     * 
-     * @param book Livro com informações atualizadas
-     * @return true se a atualização foi bem-sucedida, false caso contrário
-     */
     public boolean updateBook(Book book) {
         return bookDAO.update(book);
     }
     
-    /**
-     * Remove um livro pelo seu ID.
-     * 
-     * @param id ID do livro a ser removido
-     * @return true se a remoção foi bem-sucedida, false caso contrário
-     */
     public boolean deleteBook(int id) {
         return bookDAO.delete(id);
     }
     
-    /**
-     * Retorna o total de livros cadastrados.
-     * 
-     * @return Número total de livros
-     */
     public int getTotalBooks() {
         return bookDAO.count();
     }

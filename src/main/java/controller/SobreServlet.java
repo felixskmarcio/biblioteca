@@ -1,3 +1,5 @@
+// Este servlet é responsável por exibir a página sobre.jsp.
+
 package controller;
 
 import jakarta.servlet.ServletException;

@@ -1,3 +1,5 @@
+// Este JSP é responsável por processar o cadastro de livros.
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="dao.BookDAO" %>
 <%@ page import="model.Book" %>

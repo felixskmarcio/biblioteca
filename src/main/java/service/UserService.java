@@ -1,3 +1,5 @@
+// Este arquivo é responsável por definir o serviço de usuário, que lida com a lógica de negócios para operações relacionadas a usuários.
+
 package service;
 
 import dao.UserDAO;
@@ -12,9 +14,6 @@ import java.util.List;
 public class UserService {
     private UserDAO userDAO;
     
-    /**
-     * Construtor padrão que inicializa o DAO de usuários.
-     */
     public UserService() {
         this.userDAO = new UserDAO();
     }
@@ -43,34 +42,24 @@ public class UserService {
     /**
      * Registra um novo usuário no sistema.
      * Verifica se o email já está em uso antes de registrar.
-     * 
-     * @param user Usuário a ser registrado
-     * @return true se o registro foi bem-sucedido, false caso contrário
      */
     public boolean registerUser(User user) {
-        // Verifica se já existe um usuário com o mesmo email
         User existingUser = userDAO.findByEmail(user.getEmail());
         if (existingUser != null) {
             return false; // Email já está em uso
         }
-        
         return userDAO.insert(user);
     }
     
     /**
      * Atualiza as informações de um usuário.
      * Verifica se o novo email já está em uso por outro usuário.
-     * 
-     * @param user Usuário com informações atualizadas
-     * @return true se a atualização foi bem-sucedida, false caso contrário
      */
     public boolean updateUser(User user) {
-        // Verifica se o novo email já está em uso por outro usuário
         User existingUser = userDAO.findByEmail(user.getEmail());
         if (existingUser != null && existingUser.getId() != user.getId()) {
             return false; // Email já está em uso por outro usuário
         }
-        
         return userDAO.update(user);
     }
     
@@ -127,9 +116,7 @@ public class UserService {
     
     /**
      * Busca usuários por nome ou email.
-     * 
-     * @param query Termo de busca
-     * @return Lista de usuários que correspondem à busca
+     * Se a consulta for vazia, retorna todos os usuários.
      */
     public List<User> searchUsers(String query) {
         if (query == null || query.trim().isEmpty()) {

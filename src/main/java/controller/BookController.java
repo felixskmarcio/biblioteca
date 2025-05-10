@@ -1,8 +1,10 @@
-package com.example.controller;
+// Este controlador é responsável por gerenciar as requisições relacionadas a livros.
+
+package controller;
 
 // Importações necessárias para o funcionamento do controlador
-import com.example.model.Book; // Modelo de dados para livros
-import com.example.service.BookService; // Serviço que gerencia operações com livros
+import model.Book; // Modelo de dados para livros
+import service.BookService; // Serviço que gerencia operações com livros
 
 // Importações do Java Servlet API para processamento de requisições web
 import javax.servlet.ServletException;
@@ -79,7 +81,7 @@ public class BookController extends HttpServlet {
             request.setAttribute("books", bookService.searchBooks(query));
             
             // Encaminha para a página de resultados
-            request.getRequestDispatcher("/WEB-INF/books/results.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/livros/lista.jsp").forward(request, response);
         } 
         // Verifica se é uma requisição para listar todos os livros
         else if ("/books/list".equals(servletPath)) {
@@ -87,12 +89,12 @@ public class BookController extends HttpServlet {
             request.setAttribute("books", bookService.getAllBooks());
             
             // Encaminha para a página de listagem
-            request.getRequestDispatcher("/WEB-INF/books/list.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/livros/lista.jsp").forward(request, response);
         } 
         // Verifica se é uma requisição para exibir o formulário de registro
         else if ("/books/register".equals(servletPath)) {
             // Encaminha para a página de registro
-            request.getRequestDispatcher("/WEB-INF/books/register.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/views/livros/formulario.jsp").forward(request, response);
         }
     }
 }

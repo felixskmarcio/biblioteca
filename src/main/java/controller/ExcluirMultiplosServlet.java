@@ -1,3 +1,5 @@
+// Este servlet é responsável por processar a exclusão de múltiplos livros.
+
 package controller;
 
 import dao.BookDAO;

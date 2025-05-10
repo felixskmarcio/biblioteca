@@ -1,3 +1,5 @@
+// Este arquivo é responsável por gerenciar as conexões com o banco de dados.
+
 package dao;
 
 import java.sql.Connection;

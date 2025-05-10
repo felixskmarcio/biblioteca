@@ -1,4 +1,6 @@
-package com.example.controller;
+// Este controlador é responsável por gerenciar as requisições relacionadas a usuários.
+
+package controller;
 
 // Importações necessárias para o funcionamento do controlador
 import java.io.IOException;
@@ -9,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 // Importações de classes do projeto
-import com.example.model.User; // Modelo de dados para usuários
-import com.example.service.UserService; // Serviço que gerencia operações com usuários
+import model.User; // Modelo de dados para usuários
+import service.UserService; // Serviço que gerencia operações com usuários
 
 /**
  * Controlador responsável por gerenciar as requisições relacionadas a usuários.
@@ -77,7 +79,7 @@ public class UserController extends HttpServlet {
     private void listUsers(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("users", userService.getAllUsers());
-        request.getRequestDispatcher("/WEB-INF/users/list.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/user-profile.jsp").forward(request, response);
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
@@ -85,7 +87,7 @@ public class UserController extends HttpServlet {
         Long id = Long.parseLong(request.getParameter("id"));
         User user = userService.getUserById(id);
         request.setAttribute("user", user);
-        request.getRequestDispatcher("/WEB-INF/users/form.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/user-profile.jsp").forward(request, response);
     }
 
     private void addUser(HttpServletRequest request, HttpServletResponse response)
@@ -124,6 +126,6 @@ public class UserController extends HttpServlet {
 
     private void showRegisterForm(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/users/register.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/register.jsp").forward(request, response);
     }
 }

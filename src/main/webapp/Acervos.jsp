@@ -1,3 +1,5 @@
+// Este JSP é usado para exibir a lista de livros e permitir o cadastro de novos.
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">

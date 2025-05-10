@@ -1,3 +1,5 @@
+// Este arquivo é responsável por definir a classe User, que representa um usuário no sistema.
+
 package model;
 
 import java.util.Date;

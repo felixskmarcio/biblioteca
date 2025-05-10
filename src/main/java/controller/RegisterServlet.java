@@ -1,3 +1,5 @@
+// Este servlet é responsável por processar as requisições de registro de novos usuários.
+
 package controller;
 
 import model.User;

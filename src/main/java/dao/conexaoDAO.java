@@ -1,3 +1,5 @@
+// Este DAO é responsável por estabelecer conexões com o banco de dados.
+
 package dao;
 
 import java.sql.Connection;

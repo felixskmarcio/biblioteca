@@ -1,3 +1,5 @@
+// Este servlet é responsável por gerenciar o perfil do usuário.
+
 package controller;
 
 import model.User;

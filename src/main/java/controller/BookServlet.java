@@ -1,3 +1,5 @@
+// Este servlet é responsável por gerenciar as operações CRUD de livros.
+
 package controller;
 
 import model.Book;

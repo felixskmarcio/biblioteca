@@ -1,3 +1,5 @@
+// Este servlet é responsável por processar as requisições de autenticação (login).
+
 package controller;
 
 import model.User;

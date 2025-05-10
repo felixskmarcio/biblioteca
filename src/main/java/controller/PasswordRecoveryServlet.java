@@ -1,3 +1,5 @@
+// Este servlet é responsável por processar as requisições de recuperação de senha.
+
 package controller;
 
 import model.User;

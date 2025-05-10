@@ -1,3 +1,5 @@
+// Este arquivo é responsável por definir a classe Book, que representa um livro no sistema.
+
 package model;
 
 import java.util.Date;

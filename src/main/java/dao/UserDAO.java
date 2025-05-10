@@ -1,3 +1,6 @@
+// Este DAO é responsável por realizar operações de CRUD (Create, Read, Update, Delete)
+// relacionadas aos usuários no banco de dados.
+
 package dao;
 
 import model.User;

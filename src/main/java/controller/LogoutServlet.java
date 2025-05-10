@@ -1,3 +1,5 @@
+// Este servlet é responsável por processar o logout do usuário.
+
 package controller;
 
 import jakarta.servlet.ServletException;
