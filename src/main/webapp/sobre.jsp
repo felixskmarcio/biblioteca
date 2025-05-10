@@ -71,7 +71,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/livros">Livros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="${pageContext.request.contextPath}/sobre">Sobre</a>
@@ -325,7 +325,7 @@
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
-                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/livros" class="text-decoration-none text-light">Livros</a></li>
                         <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
                         <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
                     </ul>

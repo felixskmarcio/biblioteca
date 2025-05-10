@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acervo da Biblioteca</title>
+    <title>Livros da Biblioteca</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
@@ -68,7 +68,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                            <a class="nav-link active" href="${pageContext.request.contextPath}/livros">Livros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
@@ -85,7 +85,7 @@
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container text-center">
-            <h1 class="display-5 mb-3">Acervo da Biblioteca</h1>
+            <h1 class="display-5 mb-3">Livros da Biblioteca</h1>
             <p class="lead">Explore nossa coleção de livros e encontre sua próxima leitura</p>
         </div>
     </section>
@@ -112,7 +112,7 @@
     <section class="container filter-section">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
-                <form action="${pageContext.request.contextPath}/acervos" method="GET" class="d-flex">
+                <form action="${pageContext.request.contextPath}/livros" method="GET" class="d-flex">
                     <input type="text" name="q" class="form-control me-2" placeholder="Pesquisar por título, autor ou gênero..." value="${searchTerm}">
                     <button type="submit" class="btn btn-primary">
                         <i class="bi bi-search"></i> Buscar
@@ -130,7 +130,7 @@
                     <% if (request.getAttribute("searchTerm") != null && !request.getAttribute("searchTerm").toString().isEmpty()) { %>
                         Resultados para: "${searchTerm}"
                     <% } else { %>
-                        Nosso Acervo
+                        Nossos Livros
                     <% } %>
                 </h2>
                 <div>
@@ -191,7 +191,7 @@
                     <div class="col-12 text-center py-5">
                         <i class="bi bi-search display-1 text-muted"></i>
                         <h3 class="mt-4">Nenhum livro encontrado</h3>
-                        <p class="text-muted">Tente uma busca diferente ou explore nosso acervo completo.</p>
+                        <p class="text-muted">Tente uma busca diferente ou explore nossa coleção completa de livros.</p>
                     </div>
                 <% } else { 
                     for (model.Book book : books) { 
@@ -229,19 +229,19 @@
             <nav aria-label="Navegação de páginas" class="mt-5">
                 <ul class="pagination justify-content-center">
                     <li class="page-item <%= (currentPage == 1) ? "disabled" : "" %>">
-                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= currentPage - 1 %>" aria-label="Anterior">
+                        <a class="page-link" href="${pageContext.request.contextPath}/livros?page=<%= currentPage - 1 %>" aria-label="Anterior">
                             <span aria-hidden="true">&laquo;</span>
                         </a>
                     </li>
                     
                     <% for (int i = 1; i <= noOfPages; i++) { %>
                         <li class="page-item <%= (currentPage == i) ? "active" : "" %>">
-                            <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= i %>"><%= i %></a>
+                            <a class="page-link" href="${pageContext.request.contextPath}/livros?page=<%= i %>"><%= i %></a>
                         </li>
                     <% } %>
                     
                     <li class="page-item <%= (currentPage == noOfPages) ? "disabled" : "" %>">
-                        <a class="page-link" href="${pageContext.request.contextPath}/acervos?page=<%= currentPage + 1 %>" aria-label="Próximo">
+                        <a class="page-link" href="${pageContext.request.contextPath}/livros?page=<%= currentPage + 1 %>" aria-label="Próximo">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     </li>
@@ -264,7 +264,7 @@
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
-                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/livros" class="text-decoration-none text-light">Livros</a></li>
                         <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
                         <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
                     </ul>
@@ -308,7 +308,7 @@
             const checkboxes = document.querySelectorAll('.book-checkbox:checked');
             const quantidade = checkboxes.length;
             
-            if (confirm(`Tem certeza que deseja excluir ${quantidade} livro(s) do acervo? Esta ação não pode ser desfeita.`)) {
+            if (confirm(`Tem certeza que deseja excluir ${quantidade} livro(s) da biblioteca? Esta ação não pode ser desfeita.`)) {
                 document.getElementById('formExclusao').submit();
             }
         }

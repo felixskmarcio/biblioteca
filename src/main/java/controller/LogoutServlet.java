@@ -2,6 +2,7 @@ package controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,6 +35,19 @@ public class LogoutServlet extends HttpServlet {
             
             // Invalida a sessão
             session.invalidate();
+        }
+        
+        // Limpa os cookies de "lembrar de mim"
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("rememberedEmail".equals(cookie.getName()) || "rememberedToken".equals(cookie.getName())) {
+                    cookie.setValue("");
+                    cookie.setMaxAge(0); // Remove o cookie
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                }
+            }
         }
         
         // Redireciona para a página inicial

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -34,7 +34,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                            <a class="nav-link active" href="${pageContext.request.contextPath}/livros">Livros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
@@ -62,7 +62,7 @@
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-body p-4">
-                        <form action="${pageContext.request.contextPath}/processarCadastroLivro.jsp" method="POST">
+                        <form action="${pageContext.request.contextPath}/livros/salvar" method="POST">
                             <c:if test="${not empty book.id}">
                                 <input type="hidden" name="id" value="${book.id}">
                             </c:if>
@@ -124,7 +124,7 @@
                             </div>
                             
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                                <a href="${pageContext.request.contextPath}/acervos" class="btn btn-outline-secondary me-md-2">Cancelar</a>
+                                <a href="${pageContext.request.contextPath}/livros" class="btn btn-outline-secondary me-md-2">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
                             </div>
                         </form>
@@ -148,7 +148,7 @@
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
-                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/livros" class="text-decoration-none text-light">Livros</a></li>
                         <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
                         <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
                     </ul>

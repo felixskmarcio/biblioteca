@@ -49,7 +49,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/livros">Livros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
@@ -69,10 +69,10 @@
             <h1 class="display-4 mb-4">Biblioteca Comunitária</h1>
             <p class="lead mb-5">Promovendo o acesso à leitura e cultura para todos</p>
             <div>
-                <a href="${pageContext.request.contextPath}/acervos" class="btn btn-primary btn-lg me-3">
-                    <i class="bi bi-book"></i> Explorar Acervo
+                <a href="${pageContext.request.contextPath}/livros" class="btn btn-primary btn-lg me-3">
+                    <i class="bi bi-book"></i> Explorar Livros
                 </a>
-                <a href="${pageContext.request.contextPath}/cadastro" class="btn btn-outline-light btn-lg">
+                <a href="${pageContext.request.contextPath}/register" class="btn btn-outline-light btn-lg">
                     <i class="bi bi-person-plus"></i> Cadastre-se
                 </a>
             </div>
@@ -175,8 +175,8 @@
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
-                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
-                        <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
+                        <li><a href="${pageContext.request.contextPath}/livros" class="text-decoration-none text-light">Livros</a></li>
+                        <li><a href="${pageContext.request.contextPath}/register" class="text-decoration-none text-light">Cadastro</a></li>
                         <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
                     </ul>
                 </div>

@@ -57,7 +57,7 @@ public class ExcluirMultiplosServlet extends HttpServlet {
         request.getSession().setAttribute("mensagem", mensagem);
         request.getSession().setAttribute("tipoAlerta", contador > 0 ? "success" : "danger");
         
-        // Redireciona de volta para a página de acervos
-        response.sendRedirect(request.getContextPath() + "/acervos");
+        // Redireciona de volta para a página de livros
+        response.sendRedirect(request.getContextPath() + "/livros");
     }
 } 

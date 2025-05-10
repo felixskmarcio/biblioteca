@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -44,7 +44,7 @@
                             <a class="nav-link" href="${pageContext.request.contextPath}/">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="${pageContext.request.contextPath}/acervos">Acervo</a>
+                            <a class="nav-link active" href="${pageContext.request.contextPath}/livros">Livros</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="${pageContext.request.contextPath}/sobre">Sobre</a>
@@ -100,12 +100,12 @@
                         
                         <div class="book-actions d-flex justify-content-between">
                             <div>
-                                <a href="${pageContext.request.contextPath}/acervos" class="btn btn-outline-secondary">
-                                    <i class="bi bi-arrow-left"></i> Voltar ao Acervo
+                                <a href="${pageContext.request.contextPath}/livros" class="btn btn-outline-secondary">
+                                    <i class="bi bi-arrow-left"></i> Voltar aos Livros
                                 </a>
                             </div>
                             <div>
-                                <a href="${pageContext.request.contextPath}/formulario.jsp?id=${book.id}" class="btn btn-outline-primary me-2">
+                                <a href="${pageContext.request.contextPath}/livros/editar?id=${book.id}" class="btn btn-outline-primary me-2">
                                     <i class="bi bi-pencil"></i> Editar
                                 </a>
                                 <a href="${pageContext.request.contextPath}/livros/remover?id=${book.id}" class="btn btn-outline-danger"
@@ -134,7 +134,7 @@
                     <h5>Links Rápidos</h5>
                     <ul class="list-unstyled">
                         <li><a href="${pageContext.request.contextPath}/" class="text-decoration-none text-light">Início</a></li>
-                        <li><a href="${pageContext.request.contextPath}/acervos" class="text-decoration-none text-light">Acervo</a></li>
+                        <li><a href="${pageContext.request.contextPath}/livros" class="text-decoration-none text-light">Livros</a></li>
                         <li><a href="${pageContext.request.contextPath}/cadastro" class="text-decoration-none text-light">Cadastro</a></li>
                         <li><a href="${pageContext.request.contextPath}/sobre" class="text-decoration-none text-light">Sobre</a></li>
                     </ul>
