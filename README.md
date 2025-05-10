@@ -1,6 +1,19 @@
-# Sistema de Biblioteca Comunitária
+# Biblioteca
 
-Um sistema web completo para gerenciamento de bibliotecas comunitárias, permitindo o controle de acervo, usuários e empréstimos.
+Um sistema de gerenciamento para bibliotecas.
+
+## Descrição
+Este projeto tem como objetivo criar um sistema de gerenciamento de bibliotecas que permite catalogar, emprestar e gerenciar livros e outros recursos.
+
+## Funcionalidades (Planejadas)
+- Cadastro de livros
+- Controle de empréstimos
+- Gerenciamento de usuários
+- Pesquisa no acervo
+- Relatórios estatísticos
+
+## Tecnologias
+- Em definição
 
 ## 📋 Sobre o Projeto
 
